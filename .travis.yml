@@ -1,10 +1,18 @@
 language: python
 python:
-  - "2.6"
-  - "2.7"
-  - "3.2"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-install: "pip install -r requirements.txt"
+- '2.6'
+- '2.7'
+- '3.2'
+- '3.3'
+- '3.4'
+- '3.5'
+install: pip install -r requirements.txt
 script: touch foo
+deploy:
+  provider: pypi
+  user: gugahoi
+  password:
+    secure: y24rfJeQQeaerkv4KiaMBgcOt7j3nJ+5QTEk7lj5k8CFVWtRTTecnFEzz+703zvDtlb974zL1X1SXq2nxIQqui9isgjLq7UaTnG0RN1Rm3Q6m2zeRfUNk3bEHHX1NYZo1sZFeEGdOlwd4/1NgMmo3uh3WurdSgnaYb5tEX0W52+8lUCrjRvr+F4RZy9tB/7+3ROOgCX3394FkhDEuCQzZMWQsKiKGaBXjy3FayxBCIO/rUT/UmP9Ik8OBbVYps4eTeFcy55zjJqpzBRZleGP4bgMK5pdW+Emw6LDnxijITtJmt5fDjLei+bLXUjxlcirhfTfMvFcFIoiseMHqdlNjd8+n8iDqWduE+M+YTwG+BUjmDcruReElr22Scu+zQrjJTxLfQAdsfazeGVVHZinnzCktB3AeXCbkHo0HwSUCBd3mYOC1cuCRtpLKSBuMTfJXJ1n+VY2RornKK3O6jPp11sPxMNfSo+Mk28z8sfv/WDcZE6Zk+nsZlWXYkQLx6xEJOCADZ2p1qJL0p+5Bw7knFdMnBhGXeS4DPV85bWlScVTN47syC/+NfRVD7MzHC8zzp1CJJgxkwuw/5lZIl6F53eb4qWXYh6oQSY56WwFUVs5fLuCuPTzn7ZHymsN5rDvcku6C9AJS12eh3dqOBeqaLCgDw70XhdtH6K4W+dqbDI=
+  on:
+    tags: true
+    branch: master
