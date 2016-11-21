@@ -11,7 +11,7 @@ from codecs import open
 from os import path
 
 setup(
-    name='gh.artifactory',
+    name='artifactory-lib',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -53,13 +53,4 @@ setup(
     keywords='artifactory management library',
     py_modules=["Artifactory"],
     install_requires=['requests']
-
-    # List additional groups of dependencies here (e.g. development
-    # dependencies). You can install these using the following syntax,
-    # for example:
-    # $ pip install -e .[dev,test]
-    # extras_require={
-        # 'dev': ['check-manifest'],
-        # 'test': ['coverage'],
-    # },
 )
