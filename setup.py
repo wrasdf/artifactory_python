@@ -9,19 +9,6 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
-from setuptools import setup
-
-# Utility function to read the README file.
-# To upload to PyPi, you need to have 'pypandoc'.
-# Otherwise the readme will be clumsy.
-try:
-    from pypandoc import convert
-    read_md = lambda fname: convert(path.join(path.dirname(__file__), fname), 'rst')
-except ImportError:
-    print("warning: pypandoc module not found," +
-          " could not convert Markdown to RST")
-    read_md = lambda fname: open(path.join(path.dirname(__file__),
-                                              fname), 'r').read()
 
 setup(
     name='gh.artifactory',
@@ -34,7 +21,6 @@ setup(
     setup_requires=['setuptools_scm'],
 
     description='Python library for interacting with Artifactory API',
-    long_description=read_md('README.md'),
     url='https://github.com/gugahoi/artifactory_python',
     author='Gustavo Hoirisch',
     author_email='gugahoi@gmail.com',
