@@ -9,6 +9,7 @@ python:
 install: pip install -r requirements.txt
 script: touch foo
 deploy:
+  skip_cleanup: true
   provider: pypi
   user: gugahoi
   password:
