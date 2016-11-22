@@ -3,10 +3,9 @@ import requests
 class Artifactory(object):
     """Artifactory Management Tool"""
     def __init__(self, username, apikey, base_url='https://localhost:8080/artifactory'):
-        super(Artifactory, self).__init__()
-        self.username = username
-        self.apikey   = apikey
-        self.base_url = base_url
+        self.username = self.set_username(username)
+        self.apikey   = self.set_apikey(apikey)
+        self.base_url = self.set_base_url(base_url)
 
     def __str__(self):
         return 'Artifactory: %s @ %s' % (self.username, self.base_url)
@@ -22,7 +21,17 @@ class Artifactory(object):
         self.apikey = apikey
 
     def set_base_url(self, base_url):
-        self.base_url = base_url
+        self.base_url = base_url.rstrip('/')
+
+    '''Internal Getters'''
+    def get_username(self):
+        return self.username
+
+    def get_apikey(self):
+        return self.apikey
+
+    def get_base_url(self):
+        return self.base_url
 
     ''' Helper functions '''
     def build_url(self, endpoint):
