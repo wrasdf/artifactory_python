@@ -60,6 +60,12 @@ class ArtifactoryTestCase(unittest.TestCase):
             self.artifactory.revoke_api_key()
             mock.assert_called_once_with(URL['API'])
 
+    def test_delete_item(self):
+        item_path = '/somerepo/some-item/99.9/some-item.jar'
+        with patch.object(Artifactory, 'delete') as mock:
+            self.artifactory.delete_item(item_path)
+            mock.assert_called_once_with(item_path)
+
     def test_get_storage_info(self):
         with patch.object(Artifactory, 'get') as mock:
             self.artifactory.get_storage_info()

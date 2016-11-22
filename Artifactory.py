@@ -104,6 +104,9 @@ class Artifactory(object):
     Artifacts and Storage
     https://www.jfrog.com/confluence/display/RTF/Artifactory+REST+API#ArtifactoryRESTAPI-ARTIFACTS&STORAGE
     '''
+    def delete_item(self, item_path):
+        return self.delete(item_path)
+
     def get_storage_info(self):
         return self.get('/storageinfo')
 
