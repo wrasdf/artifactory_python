@@ -15,7 +15,7 @@ class ArtifactoryTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.artifactory = Artifactory('admin','password')
+        self.artifactory = Artifactory('admin','password', base_url='https://fake_url/artifactory')
 
     def test_get_users(self):
         with patch.object(Artifactory, 'get') as mock:
