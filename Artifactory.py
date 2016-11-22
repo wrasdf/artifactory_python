@@ -45,7 +45,7 @@ class Artifactory(object):
         r = requests.get(
             self.build_url(endpoint),
             auth=(self.username, self.apikey),
-            params=param
+            params=params
         )
         if r.status_code is 200:
             return r.json()
