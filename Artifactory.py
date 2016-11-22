@@ -41,8 +41,12 @@ class Artifactory(object):
             endpoint
         ])
 
-    def get(self, endpoint):
-        r = requests.get(self.build_url(endpoint), auth=(self.username, self.apikey))
+    def get(self, endpoint, params={}):
+        r = requests.get(
+            self.build_url(endpoint),
+            auth=(self.username, self.apikey),
+            params=param
+        )
         if r.status_code is 200:
             return r.json()
 
@@ -95,3 +99,17 @@ class Artifactory(object):
 
     def revoke_api_key(self):
         return self.delete('/security/apiKey')
+
+    '''
+    Artifacts and Storage
+    https://www.jfrog.com/confluence/display/RTF/Artifactory+REST+API#ArtifactoryRESTAPI-ARTIFACTS&STORAGE
+    '''
+    def get_storage_info(self):
+        return self.get('/storageinfo')
+
+    def search_by_creation_date(self, start, end, repos=''):
+        return self.get('/search/creation', params={
+            'from': start,
+            'to': end,
+            'repos': repos
+        })

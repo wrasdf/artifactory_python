@@ -60,5 +60,19 @@ class ArtifactoryTestCase(unittest.TestCase):
             self.artifactory.revoke_api_key()
             mock.assert_called_once_with(URL['API'])
 
+    def test_get_storage_info(self):
+        with patch.object(Artifactory, 'get') as mock:
+            self.artifactory.get_storage_info()
+            mock.assert_called_once_with('/storageinfo')
+
+    def test_search_by_creation_date(self):
+        start = 1479790359503
+        end = 1479790373396
+        repos = 'somerepo'
+        params = {'from': start, 'to': end, 'repos': repos}
+        with patch.object(Artifactory, 'get') as mock:
+            self.artifactory.search_by_creation_date(start, end, repos)
+            mock.assert_called_once_with('/search/creation', params=params)
+
 if __name__ == '__main__':
     unittest.main()
